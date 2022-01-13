@@ -9,6 +9,43 @@ namespace SpecFlowCalculator
         public int SecondNumber { get; set; }
 
         public List<int> Numbers = new List<int>();
+        public List<Tuple<int, string>> Operations = new List<Tuple<int, string>>();
+
+        public int Calcul()
+        {
+            int result = 0;
+            try
+            {
+                if(Operations.Count > 0)
+                {
+                    result = Operations[0].Item1;
+                    for(int i = 1; i < Operations.Count; i++)
+                    {
+                        switch (Operations[i-1].Item2)
+                        {
+                            case "+":
+                                result += Operations[i].Item1;
+                                break;
+                            case "-":
+                                result -= Operations[i].Item1;
+                                break;
+                            case "*":
+                                result *= Operations[i].Item1;
+                                break;
+                            case "/":
+                                result /= Operations[i].Item1;
+                                break;
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                result = 0;
+            }
+            return result;
+        }
+
         public int Add()
         {
             int result = 0;

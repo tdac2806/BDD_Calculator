@@ -32,3 +32,11 @@ Scenario: Divide by 0
     And the number is 0
     When the two numbers are divided
     Then the result should be 0
+
+Scenario: Multiple Operation in same calcul
+    Given number is 10 and the operator is *
+    And number is 2 and the operator is +
+    And number is 5 and the operator is -
+    And the last number is 4
+    When the calcul is made
+    Then the result should be 21

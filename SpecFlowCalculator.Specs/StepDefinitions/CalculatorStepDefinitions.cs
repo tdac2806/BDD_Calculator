@@ -25,10 +25,28 @@ namespace SpecFlowCalculator.Specs.Steps
             _calculator.Numbers.Add(number);
         }
 
+        [Given("number is (.*) and the operator is (.*)")]
+        public void GivenTheCalculIs(int number, string Operator)
+        {
+            _calculator.Operations.Add(Tuple.Create(number, Operator));
+        }
+
+        [Given("the last number is (.*)")]
+        public void FinishCalus(int number)
+        {
+            _calculator.Operations.Add(Tuple.Create(number, ""));
+        }
+
         [When("the two numbers are added")]
         public void WhenTheTwoNumbersAreAdded()
         {
             _result = _calculator.Add();
+        }
+
+        [When("the calcul is made")]
+        public void WhenTheCalculIsMade()
+        {
+            _result = _calculator.Calcul();
         }
 
         [When("the two numbers are multiplied")]
