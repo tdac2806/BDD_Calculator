@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SpecFlowCalculator
 {
@@ -7,17 +8,52 @@ namespace SpecFlowCalculator
         public int FirstNumber { get; set; }
         public int SecondNumber { get; set; }
 
+        public List<int> Numbers = new List<int>();
         public int Add()
         {
-            return FirstNumber + SecondNumber;
+            int result = 0;
+            if (Numbers.Count > 0)
+            {
+                result = Numbers[0];
+                for (int i = 1; i < Numbers.Count; i++)
+                {
+                    result += Numbers[i];
+                }
+            }
+            return result;
         }
         public int Multiply()
         {
-            return FirstNumber * SecondNumber;
+            int result = 0;
+            if (Numbers.Count > 0)
+            {
+                result = Numbers[0];
+                for(int i = 1; i < Numbers.Count; i++)
+                {
+                    result *= Numbers[i];
+                }
+            }
+            return result;
         }
         public int Divide()
         {
-            return FirstNumber / SecondNumber;
+            int result = 0;
+            try
+            {
+                if (Numbers.Count > 0)
+                {
+                    result = Numbers[0];
+                    for (int i = 1; i < Numbers.Count; i++)
+                    {
+                        result /= Numbers[i];
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                result = 0;
+            }
+            return result;
         }
     }
 }

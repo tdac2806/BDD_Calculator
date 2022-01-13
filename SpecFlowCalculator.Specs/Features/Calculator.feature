@@ -7,19 +7,28 @@ Link to a feature: [Calculator](SpecFlowCalculator.Specs/Features/Calculator.fea
 
 @mytag
 Scenario: Add two numbers
-	Given the first number is 50
-	And the second number is 70
+	Given the number is 50
+	And the number is 70
+    And the number is 30
 	When the two numbers are added
-	Then the result should be 120
+	Then the result should be 150
 
 Scenario: Multiply two numbers
-    Given the first number is 5
-    And the second number is 10
+    Given the number is 5
+    And the number is 10
+    And the number is 2
     When the two numbers are multiplied
-    Then the result should be 50
+    Then the result should be 100
 
-Scenario: Divide two numbers
-    Given the first number is 42
-    And the second number is 6
+Scenario: Divide two numbers 
+    Given the number is 40
+    And the number is 2
+    And the number is 5
     When the two numbers are divided
-    Then the result should be 7
+    Then the result should be 4
+
+Scenario: Divide by 0 
+    Given the number is 5
+    And the number is 0
+    When the two numbers are divided
+    Then the result should be 0

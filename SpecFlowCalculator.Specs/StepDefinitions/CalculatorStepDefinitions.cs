@@ -1,4 +1,5 @@
 using FluentAssertions;
+using System.Collections.Generic;
 using TechTalk.SpecFlow;
 
 namespace SpecFlowCalculator.Specs.Steps
@@ -18,16 +19,10 @@ namespace SpecFlowCalculator.Specs.Steps
             _scenarioContext = scenarioContext;
         }
 
-        [Given("the first number is (.*)")]
+        [Given("the number is (.*)")]
         public void GivenTheFirstNumberIs(int number)
         {
-            _calculator.FirstNumber = number;
-        }
-
-        [Given("the second number is (.*)")]
-        public void GivenTheSecondNumberIs(int number)
-        {
-            _calculator.SecondNumber = number;
+            _calculator.Numbers.Add(number);
         }
 
         [When("the two numbers are added")]
@@ -45,15 +40,13 @@ namespace SpecFlowCalculator.Specs.Steps
         [When("the two numbers are divided")]
         public void WhenTheTwoNumbersAreDivided()
         {
-            if(_calculator.SecondNumber != 0)
-                _result = _calculator.Divide();
+            _result = _calculator.Divide();
         }
 
         [Then("the result should be (.*)")]
         public void ThenTheResultShouldBe(int result)
         {
-            if (_calculator.SecondNumber != 0)
-                _result.Should().Be(result);
+            _result.Should().Be(result);
         }
     }
 }
